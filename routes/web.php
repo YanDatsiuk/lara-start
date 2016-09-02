@@ -81,4 +81,35 @@ Route::group(['prefix' => '/admin/category-relations'], function () {
 
 });
 
+/*
+ * Admin panel - manage products.
+ */
+Route::group(['prefix' => '/admin/products'], function () {
+
+    Route::get('/', [
+        'uses' => 'AdminProductsController@products'
+    ]);
+
+    Route::get('/create', [
+        'uses' => 'AdminProductsController@create'
+    ]);
+
+    Route::post('/create', [
+        'uses' => 'AdminProductsController@store'
+    ]);
+
+    Route::get('/edit/{id}', [
+        'uses' => 'AdminProductsController@edit'
+    ]);
+
+    Route::post('/edit/{id}', [
+        'uses' => 'AdminProductsController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'uses' => 'AdminProductsController@delete'
+    ]);
+
+});
+
 
