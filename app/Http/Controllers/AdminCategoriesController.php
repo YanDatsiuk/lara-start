@@ -52,7 +52,7 @@ class AdminCategoriesController extends Controller
             $category->save();
         }
 
-        return view('pages.admin.categories.create');
+        return $this->create();
     }
 
     /*
@@ -87,9 +87,7 @@ class AdminCategoriesController extends Controller
             $category->save();
         }
 
-        return view('pages.admin.categories.edit',[
-            'category' => $category
-        ]);
+        return $this->edit($id);
     }
 
     /*

@@ -50,4 +50,35 @@ Route::group(['prefix' => '/admin/categories'], function () {
 
 });
 
+/*
+ * Admin panel - manage category relations.
+ */
+Route::group(['prefix' => '/admin/category-relations'], function () {
+
+    Route::get('/', [
+        'uses' => 'AdminCategoryRelationsController@categoryRelations'
+    ]);
+
+    Route::get('/create', [
+        'uses' => 'AdminCategoryRelationsController@create'
+    ]);
+
+    Route::post('/create', [
+        'uses' => 'AdminCategoryRelationsController@store'
+    ]);
+
+    Route::get('/edit/{id}', [
+        'uses' => 'AdminCategoryRelationsController@edit'
+    ]);
+
+    Route::post('/edit/{id}', [
+        'uses' => 'AdminCategoryRelationsController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'uses' => 'AdminCategoryRelationsController@delete'
+    ]);
+
+});
+
 

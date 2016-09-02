@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section">
 
-            <h3>Categories</h3>
+            <h3>Category Relations</h3>
 
             <table>
 
@@ -13,7 +13,8 @@
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Title</th>
+                    <th>Child category</th>
+                    <th>Parent category</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -21,19 +22,20 @@
 
                 {{-- Table rows --}}
                 <tbody>
-                @foreach($categories as $category)
+                @foreach($categoryRelations as $categoryRelation)
                     <tr>
-                        <td>{{$category->id}}</td>
-                        <td>{{$category->title}}</td>
+                        <td>{{$categoryRelation->id}}</td>
+                        <td>{{$categoryRelation->childCategory->title}}</td>
+                        <td>{{$categoryRelation->parentCategory->title}}</td>
                         <td>
                             <a class="btn-floating waves-effect waves-light"
-                               href="{{url('/admin/categories/edit/'.$category->id)}}">
+                               href="{{url('/admin/category-relations/edit/'.$categoryRelation->id)}}">
                                 <i class="material-icons">mode_edit</i>
                             </a>
                         </td>
                         <td>
                             <a class="btn-floating waves-effect waves-light"
-                               href="{{url('/admin/categories/delete/'.$category->id)}}">
+                               href="{{url('/admin/category-relations/delete/'.$categoryRelation->id)}}">
                                 <i class="material-icons">delete</i>
                             </a>
                         </td>
@@ -45,7 +47,7 @@
 
             {{-- Create category button --}}
             <a class="btn-floating btn-large waves-effect waves-light"
-               href="{{url('/admin/categories/create')}}">
+               href="{{url('/admin/category-relations/create')}}">
                 <i class="material-icons">add</i>
             </a>
 
