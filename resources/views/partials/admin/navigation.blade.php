@@ -7,6 +7,7 @@
             <li><a href="{{url('/admin/category-relations')}}">Category Relations</a></li>
             <li><a href="{{url('/admin/products')}}">Products</a></li>
             <li><a href="{{url('/admin/images')}}">Images</a></li>
+            <li><a href="{{url('/admin/product-images')}}">Product Images</a></li>
         </ul>
 
         <ul class="right hide-on-med-and-down">

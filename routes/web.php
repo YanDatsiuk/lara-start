@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('pages.index');
 });
 
+/*
+ * Auth routes
+ */
+Auth::routes();
+Route::get('/home', 'HomeController@index');
+
 Route::get('/admin', function () {
     return view('pages.admin.index');
 });
@@ -143,4 +149,33 @@ Route::group(['prefix' => '/admin/images'], function () {
 
 });
 
+/*
+ * Admin panel - manage product images.
+ */
+Route::group(['prefix' => '/admin/product-images'], function () {
 
+    Route::get('/', [
+        'uses' => 'AdminProductImagesController@productImages'
+    ]);
+
+    Route::get('/create', [
+        'uses' => 'AdminProductImagesController@create'
+    ]);
+
+    Route::post('/create', [
+        'uses' => 'AdminProductImagesController@store'
+    ]);
+
+    Route::get('/edit/{id}', [
+        'uses' => 'AdminProductImagesController@edit'
+    ]);
+
+    Route::post('/edit/{id}', [
+        'uses' => 'AdminProductImagesController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'uses' => 'AdminProductImagesController@delete'
+    ]);
+
+});

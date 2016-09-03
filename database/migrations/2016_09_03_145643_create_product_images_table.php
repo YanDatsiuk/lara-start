@@ -18,6 +18,7 @@ class CreateProductImagesTable extends Migration {
 			$table->integer('product_id')->unsigned()->index('product_id');
 			$table->integer('image_id')->unsigned()->index('image_id');
 			$table->timestamps();
+			$table->unique(['product_id','image_id'], 'product_id_2');
 		});
 	}
 
