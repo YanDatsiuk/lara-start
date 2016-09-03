@@ -16,7 +16,8 @@ class CreateImagesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('title', 250);
-			$table->string('relative_url', 250);
+			$table->string('img_600_url', 250)->nullable();
+			$table->string('origin_url', 250)->nullable();
 			$table->timestamps();
 			$table->softDeletes()->index('deleted_at');
 		});

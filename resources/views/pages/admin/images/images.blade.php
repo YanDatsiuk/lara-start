@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section">
 
-            <h3>Category Relations</h3>
+            <h3>Images</h3>
 
             <table>
 
@@ -13,8 +13,9 @@
                 <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Child category</th>
-                    <th>Parent category</th>
+                    <th>Title</th>
+                    <th>Image 600px</th>
+                    <th>Image origin</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -22,20 +23,32 @@
 
                 {{-- Table rows --}}
                 <tbody>
-                @foreach($categoryRelations as $categoryRelation)
+                @foreach($images as $image)
                     <tr>
-                        <td>{{$categoryRelation->id}}</td>
-                        <td>{{$categoryRelation->childCategory->title}}</td>
-                        <td>{{$categoryRelation->parentCategory->title}}</td>
+                        <td>{{$image->id}}</td>
+                        <td>{{$image->title}}</td>
+
+                        @if (!is_null($image->img_600_url))
+                            <td><img class="responsive-img" src="{{url($image->img_600_url)}}" width="200"></td>
+                        @else
+                            <td>image link is broken</td>
+                        @endif
+
+                        @if (!is_null($image->origin_url))
+                            <td><a href="{{url($image->origin_url)}}">image link</a></td>
+                        @else
+                            <td>image link is broken</td>
+                        @endif
+
                         <td>
                             <a class="btn-floating waves-effect waves-light"
-                               href="{{url('/admin/category-relations/edit/'.$categoryRelation->id)}}">
+                               href="{{url('/admin/images/edit/'.$image->id)}}">
                                 <i class="material-icons">mode_edit</i>
                             </a>
                         </td>
                         <td>
                             <a class="btn-floating waves-effect waves-light"
-                               href="{{url('/admin/category-relations/delete/'.$categoryRelation->id)}}">
+                               href="{{url('/admin/images/delete/'.$image->id)}}">
                                 <i class="material-icons">delete</i>
                             </a>
                         </td>
@@ -45,9 +58,9 @@
 
             </table>
 
-            {{-- Create category relation button --}}
+            {{-- Create image button --}}
             <a class="btn-floating btn-large waves-effect waves-light"
-               href="{{url('/admin/category-relations/create')}}">
+               href="{{url('/admin/images/create')}}">
                 <i class="material-icons">add</i>
             </a>
 

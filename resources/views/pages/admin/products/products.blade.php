@@ -47,7 +47,7 @@
 
             </table>
 
-            {{-- Create category button --}}
+            {{-- Create product button --}}
             <a class="btn-floating btn-large waves-effect waves-light"
                href="{{url('/admin/products/create')}}">
                 <i class="material-icons">add</i>

@@ -112,4 +112,35 @@ Route::group(['prefix' => '/admin/products'], function () {
 
 });
 
+/*
+ * Admin panel - manage images.
+ */
+Route::group(['prefix' => '/admin/images'], function () {
+
+    Route::get('/', [
+        'uses' => 'AdminImagesController@images'
+    ]);
+
+    Route::get('/create', [
+        'uses' => 'AdminImagesController@create'
+    ]);
+
+    Route::post('/create', [
+        'uses' => 'AdminImagesController@store'
+    ]);
+
+    Route::get('/edit/{id}', [
+        'uses' => 'AdminImagesController@edit'
+    ]);
+
+    Route::post('/edit/{id}', [
+        'uses' => 'AdminImagesController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'uses' => 'AdminImagesController@delete'
+    ]);
+
+});
+
 
