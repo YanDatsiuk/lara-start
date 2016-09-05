@@ -21,7 +21,8 @@
 
                 {{-- Description --}}
                 <div class="input-field">
-                    <textarea id="description" name="description" class="materialize-textarea">{{$product->description}}</textarea>
+                    <textarea id="description" name="description"
+                              class="materialize-textarea">{{$product->description}}</textarea>
                     <label for="description">Description</label>
                 </div>
 
@@ -39,6 +40,19 @@
                         @endforeach
                     </select>
                     <label>Product category</label>
+                </div>
+
+                {{-- Status --}}
+                <div class="input-field">
+                    <select name="status">
+                        <option value="" disabled>Choose product status</option>
+
+                        <option value="public" @if($product->status=='public') selected @endif>Public</option>
+                        <option value="archive" @if($product->status=='archive') selected @endif>Archive</option>
+                        <option value="private" @if($product->status=='private') selected @endif>Private</option>
+
+                    </select>
+                    <label>Product status</label>
                 </div>
 
                 <button class="btn waves-effect waves-light" type="submit" name="action">Submit

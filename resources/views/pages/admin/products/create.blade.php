@@ -36,6 +36,19 @@
                     <label>Product category</label>
                 </div>
 
+                {{-- Status --}}
+                <div class="input-field">
+                    <select name="status">
+                        <option value="" disabled selected>Choose product status</option>
+
+                        <option value="public">Public</option>
+                        <option value="archive">Archive</option>
+                        <option value="private">Private</option>
+
+                    </select>
+                    <label>Product status</label>
+                </div>
+
                 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                     <i class="material-icons right">send</i>
                 </button>

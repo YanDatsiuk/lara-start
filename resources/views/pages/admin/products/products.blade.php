@@ -16,6 +16,7 @@
                     <th>Category</th>
                     <th>Title</th>
                     <th>Description</th>
+                    <th>Status</th>
                     <th>Edit</th>
                     <th>Delete</th>
                 </tr>
@@ -29,6 +30,7 @@
                         <td>{{$product->category->title}}</td>
                         <td>{{$product->title}}</td>
                         <td>{{$product->description}}</td>
+                        <td>{{$product->status}}</td>
                         <td>
                             <a class="btn-floating waves-effect waves-light"
                                href="{{url('/admin/products/edit/'.$product->id)}}">

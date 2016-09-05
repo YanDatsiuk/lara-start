@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration {
 			$table->string('title', 250);
 			$table->string('description', 5000);
 			$table->string('slug', 200)->unique('slug');
+			$table->enum('status', array('public','archive','private',''))->default('private')->index('status');
 			$table->timestamps();
 			$table->softDeletes()->index('deleted_at');
 		});

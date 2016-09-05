@@ -56,6 +56,7 @@ class AdminProductsController extends Controller
             $product->title = $request->title;
             $product->slug = substr(str_slug($request->title),0,200);
             $product->description = $request->description;
+            $product->status = $request->status;
 
             //Storing into database
             try {
@@ -104,6 +105,7 @@ class AdminProductsController extends Controller
             $product->title = $request->title;
             $product->slug = substr(str_slug($request->title),0,200);
             $product->description = $request->description;
+            $product->status = $request->status;
 
             //Storing into database
             try {
@@ -142,6 +144,7 @@ class AdminProductsController extends Controller
             'category_id' => 'required|exists:categories,id',
             'title' => 'required|between:2,250',
             'description' => 'required|between:2,5000',
+            'status' => 'required|in:public,archive,private',
         ]);
     }
 }
