@@ -49,6 +49,7 @@ class AdminCategoriesController extends Controller
             //Storing new category
             $category = new Category();
             $category->title = $request->title;
+            $category->slug = str_slug($request->title);
             $category->save();
         }
 
@@ -84,6 +85,7 @@ class AdminCategoriesController extends Controller
 
             //Updating category
             $category->title = $request->title;
+            $category->slug = str_slug($request->title);
             $category->save();
         }
 

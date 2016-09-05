@@ -13,6 +13,7 @@ class CategoryRelation extends Model
      */
     protected $table = 'category_relations';
 
+
     /**
      * Get parent category.
      */

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Lara-cms</h5>
+                <h5 class="white-text">Lara-start</h5>
 
                 <p class="grey-text text-lighten-4"></p>
 
@@ -11,7 +11,7 @@
             <div class="col l3 s12">
                 <h5 class="white-text">Settings</h5>
                 <ul>
-                    <li><a class="white-text" href="{{url('admin')}}">ADMIN</a></li>
+                    <li><a class="white-text" href="{{url('admin')}}">Admin Panel</a></li>
                 </ul>
             </div>
             <div class="col l3 s12">

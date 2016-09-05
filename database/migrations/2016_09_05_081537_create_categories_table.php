@@ -16,6 +16,7 @@ class CreateCategoriesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->string('title', 100)->unique('title');
+			$table->string('slug', 200)->unique('slug');
 			$table->timestamps();
 			$table->softDeletes()->index('deleted_at');
 		});

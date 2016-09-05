@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Admin Lara-cms</h5>
+                <h5 class="white-text">Lara-start</h5>
 
                 <p class="grey-text text-lighten-4"></p>
 

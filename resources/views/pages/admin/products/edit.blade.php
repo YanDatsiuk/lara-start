@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section">
 
-            <h3>Editing existing category</h3>
+            <h3>Editing existing product</h3>
 
             <form action="{{url('admin/products/edit/'.$product->id)}}" method="POST" class="row section">
 

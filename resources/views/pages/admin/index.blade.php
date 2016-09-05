@@ -2,6 +2,11 @@
 
 @section('content')
 
-ADMIN HOME PAGE
+    <div class="container">
+        <div class="section">
+
+            <h3>Admin Panel Home Page.</h3>
+        </div>
+    </div>
 
 @endsection

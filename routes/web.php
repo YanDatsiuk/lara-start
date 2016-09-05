@@ -179,3 +179,15 @@ Route::group(['prefix' => '/admin/product-images'], function () {
     ]);
 
 });
+
+/********************
+ * Front site routes.
+ ********************/
+
+Route::get('/category/{slug}', [
+    'uses' => 'FrontSite\CategoriesController@categoryPage'
+]);
+
+Route::get('/product/{slug}', [
+    'uses' => 'FrontSite\ProductsController@productPage'
+]);

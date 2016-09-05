@@ -54,8 +54,16 @@ class AdminProductsController extends Controller
             $product = new Product();
             $product->category_id = $request->category_id;
             $product->title = $request->title;
+            $product->slug = substr(str_slug($request->title),0,200);
             $product->description = $request->description;
-            $product->save();
+
+            //Storing into database
+            try {
+                $product->save();
+            }catch (\Exception $e){
+                $product->slug .= time();
+                $product->save();
+            }
         }
 
         return $this->create();
@@ -94,8 +102,16 @@ class AdminProductsController extends Controller
             //Updating product
             $product->category_id = $request->category_id;
             $product->title = $request->title;
+            $product->slug = substr(str_slug($request->title),0,200);
             $product->description = $request->description;
-            $product->save();
+
+            //Storing into database
+            try {
+                $product->save();
+            }catch (\Exception $e){
+                $product->slug .= time();
+                $product->save();
+            }
         }
 
         return $this->edit($id);

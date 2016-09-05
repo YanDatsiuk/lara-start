@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section">
 
-            <h3>Creating new category</h3>
+            <h3>Creating new product</h3>
 
             <form action="{{url('admin/products/create')}}" method="POST" class="row section">
 

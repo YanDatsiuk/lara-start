@@ -1,5 +1,5 @@
 <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">lara-cms-admin</a>
+    <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Admin Panel</a>
 
         <ul id="dropdown1" class="dropdown-content">
             <li><a href="{{url('/admin/articles')}}">Articles</a></li>

@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration {
 			$table->integer('category_id')->unsigned()->index('category_id');
 			$table->string('title', 250);
 			$table->string('description', 5000);
+			$table->string('slug', 200)->unique('slug');
 			$table->timestamps();
 			$table->softDeletes()->index('deleted_at');
 		});
