@@ -180,6 +180,37 @@ Route::group(['prefix' => '/admin/product-images'], function () {
 
 });
 
+/*
+ * Admin panel - manage currency rate.
+ */
+Route::group(['prefix' => '/admin/currency-rates'], function () {
+
+    Route::get('/', [
+        'uses' => 'AdminCurrencyRatesController@currencyRates'
+    ]);
+
+    Route::get('/create', [
+        'uses' => 'AdminCurrencyRatesController@create'
+    ]);
+
+    Route::post('/create', [
+        'uses' => 'AdminCurrencyRatesController@store'
+    ]);
+
+    Route::get('/edit/{id}', [
+        'uses' => 'AdminCurrencyRatesController@edit'
+    ]);
+
+    Route::post('/edit/{id}', [
+        'uses' => 'AdminCurrencyRatesController@update'
+    ]);
+
+    Route::get('/delete/{id}', [
+        'uses' => 'AdminCurrencyRatesController@delete'
+    ]);
+
+});
+
 /********************
  * Front site routes.
  ********************/

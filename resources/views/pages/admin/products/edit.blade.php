@@ -55,6 +55,28 @@
                     <label>Product status</label>
                 </div>
 
+                {{-- Price --}}
+                <div class="input-field col s6">
+                    <input placeholder="" id="price" type="text" class="validate"
+                           name="price"
+                           @if (!is_null($product->price)) value="{{$product->price}}" @endif
+                            >
+                    <label for="price">Price</label>
+                </div>
+
+                {{-- Currency --}}
+                <div class="input-field col s6">
+                    <select name="currency">
+                        <option value="" disabled>Choose product currency</option>
+
+                        <option value="uah" @if($product->selected_currency=='uah') selected @endif>UAH</option>
+                        <option value="usd" @if($product->selected_currency=='usd') selected @endif>USD</option>
+                        <option value="eur" @if($product->selected_currency=='eur') selected @endif>EUR</option>
+
+                    </select>
+                    <label>Product currency</label>
+                </div>
+
                 <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                     <i class="material-icons right">send</i>
                 </button>

@@ -12,20 +12,20 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                 {{-- Title --}}
-                <div class="input-field">
+                <div class="input-field col s12">
                     <input placeholder="" id="title" type="text" class="validate"
                            name="title">
                     <label for="title">Title</label>
                 </div>
 
                 {{-- Description --}}
-                <div class="input-field">
+                <div class="input-field col s12">
                     <textarea id="description" name="description" class="materialize-textarea"></textarea>
                     <label for="description">Description</label>
                 </div>
 
                 {{-- Category --}}
-                <div class="input-field">
+                <div class="input-field col s12">
                     <select name="category_id">
                         <option value="" disabled selected>Choose product category</option>
 
@@ -37,7 +37,7 @@
                 </div>
 
                 {{-- Status --}}
-                <div class="input-field">
+                <div class="input-field col s12">
                     <select name="status">
                         <option value="" disabled selected>Choose product status</option>
 
@@ -47,6 +47,26 @@
 
                     </select>
                     <label>Product status</label>
+                </div>
+
+                {{-- Price --}}
+                <div class="input-field col s6">
+                    <input placeholder="" id="price" type="text" class="validate"
+                           name="price">
+                    <label for="price">Price</label>
+                </div>
+
+                {{-- Currency --}}
+                <div class="input-field col s6">
+                    <select name="currency">
+                        <option value="" disabled selected>Choose product currency</option>
+
+                        <option value="uah">UAH</option>
+                        <option value="usd">USD</option>
+                        <option value="eur">EUR</option>
+
+                    </select>
+                    <label>Product currency</label>
                 </div>
 
                 <button class="btn waves-effect waves-light" type="submit" name="action">Submit

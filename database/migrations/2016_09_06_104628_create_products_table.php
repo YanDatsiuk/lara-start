@@ -20,6 +20,10 @@ class CreateProductsTable extends Migration {
 			$table->string('description', 5000);
 			$table->string('slug', 200)->unique('slug');
 			$table->enum('status', array('public','archive','private',''))->default('private')->index('status');
+			$table->float('price_usd', 10, 0)->nullable()->index('price_usd');
+			$table->float('price_uah', 10, 0)->nullable()->index('price_uah');
+			$table->float('price_eur', 10, 0)->nullable()->index('price_eur');
+			$table->enum('selected_currency', array('usd','uah','eur'))->nullable()->index('selected_currency');
 			$table->timestamps();
 			$table->softDeletes()->index('deleted_at');
 		});

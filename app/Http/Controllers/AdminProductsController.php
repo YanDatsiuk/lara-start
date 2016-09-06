@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\CurrencyRate;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -32,7 +33,7 @@ class AdminProductsController extends Controller
     {
         $categories = Category::all();
 
-        return view('pages.admin.products.create',[
+        return view('pages.admin.products.create', [
             'categories' => $categories
         ]);
     }
@@ -54,14 +55,22 @@ class AdminProductsController extends Controller
             $product = new Product();
             $product->category_id = $request->category_id;
             $product->title = $request->title;
-            $product->slug = substr(str_slug($request->title),0,200);
+            $product->slug = substr(str_slug($request->title), 0, 200);
             $product->description = $request->description;
             $product->status = $request->status;
+
+            //Get prices in all currencies
+            $prices = CurrencyRate::calcPrices($request->currency, $request->price);
+
+            $product->price_usd = $prices['usd'];
+            $product->price_uah = $prices['uah'];
+            $product->price_eur = $prices['eur'];
+            $product->selected_currency = $request->currency;
 
             //Storing into database
             try {
                 $product->save();
-            }catch (\Exception $e){
+            } catch (\Exception $e) {
                 $product->slug .= time();
                 $product->save();
             }
@@ -73,13 +82,22 @@ class AdminProductsController extends Controller
     /*
      * Edit product page
      */
-    public function edit($id){
+    public function edit($id)
+    {
 
         $product = Product::find($id);
 
+        //Setting default currency price
+        if (!is_null($product->selected_currency)) {
+            $price_currency = 'price_' . $product->selected_currency;
+            $product->price = $product->$price_currency;
+        }else{
+            $product->price = null;
+        }
+
         $categories = Category::all();
 
-        return view('pages.admin.products.edit',[
+        return view('pages.admin.products.edit', [
             'product' => $product,
             'categories' => $categories
         ]);
@@ -88,7 +106,8 @@ class AdminProductsController extends Controller
     /*
      * Update existing product
      */
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
 
         //Finding product by id
         $product = Product::find($id);
@@ -103,14 +122,22 @@ class AdminProductsController extends Controller
             //Updating product
             $product->category_id = $request->category_id;
             $product->title = $request->title;
-            $product->slug = substr(str_slug($request->title),0,200);
+            $product->slug = substr(str_slug($request->title), 0, 200);
             $product->description = $request->description;
             $product->status = $request->status;
+
+            //Get prices in all currencies
+            $prices = CurrencyRate::calcPrices($request->currency, $request->price);
+
+            $product->price_usd = $prices['usd'];
+            $product->price_uah = $prices['uah'];
+            $product->price_eur = $prices['eur'];
+            $product->selected_currency = $request->currency;
 
             //Storing into database
             try {
                 $product->save();
-            }catch (\Exception $e){
+            } catch (\Exception $e) {
                 $product->slug .= time();
                 $product->save();
             }
@@ -122,7 +149,8 @@ class AdminProductsController extends Controller
     /*
      * Delete product
      */
-    public function delete($id){
+    public function delete($id)
+    {
 
         $product = Product::find($id);
         $product->delete();
@@ -145,6 +173,7 @@ class AdminProductsController extends Controller
             'title' => 'required|between:2,250',
             'description' => 'required|between:2,5000',
             'status' => 'required|in:public,archive,private',
+            'currency' => 'required|in:usd,uah,eur'
         ]);
     }
 }

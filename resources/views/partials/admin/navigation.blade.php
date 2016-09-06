@@ -8,6 +8,7 @@
             <li><a href="{{url('/admin/products')}}">Products</a></li>
             <li><a href="{{url('/admin/images')}}">Images</a></li>
             <li><a href="{{url('/admin/product-images')}}">Product Images</a></li>
+            <li><a href="{{url('/admin/currency-rates')}}">Currency Rates</a></li>
         </ul>
 
         <ul class="right hide-on-med-and-down">
@@ -26,6 +27,7 @@
             <li><a href="{{url('/admin/category-relations')}}">Category Relations</a></li>
             <li><a href="{{url('/admin/products')}}">Products</a></li>
             <li><a href="{{url('/admin/images')}}">Images</a></li>
+            <li><a href="{{url('/admin/currency-rates')}}">Currency Rates</a></li>
             <li><a href="{{url('/')}}">View site</a></li>
         </ul>
         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
